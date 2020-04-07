@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -26,6 +20,51 @@
 
 .App-link {
   color: #61dafb;
+}
+#chatContainer {
+  width: 92%;
+  height: 700px;
+  padding: 3vw;
+
+}
+
+#chatWindow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* padding: 50px; */
+}
+
+#output {
+  width: 60%;
+  height: 75%;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid black;
+}
+
+#user {
+  margin-top: 20px ;
+  width: 59.5%;
+  height: 5%;
+}
+
+#message {
+  width: 59.5%;
+  height: 15%;
+}
+
+#send {
+  width: 59.9%;
+  height: 5%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
