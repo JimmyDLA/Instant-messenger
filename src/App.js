@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import Button from '@material-ui/core/Button';
 import './App.css';
 
 function App() {
@@ -13,11 +13,12 @@ function App() {
   }, [])
 
     socket.onopen = function(e) {
-      socket.send("My name is John");
+
     };
     
     socket.onmessage = function(event) {
-      alert(`[message] Data received from server: ${event.data}`);
+      const data = JSON.parse(event.data);
+      createMessageElement(data);
     };
     
     socket.onclose = function(event) {
@@ -32,14 +33,23 @@ function App() {
       alert(`[error] ${error.message}`);
     };
 
+  const createMessageElement = data => {
+    const parent = document.getElementById('output');
+    const messageView = `
+      <div id="">
+        <p><strong>${data.user}:</strong>
+        ${data.message}</p>
+      </div>
+      `;
+    parent.innerHTML += messageView;
+  }
 
-  const send = () => {
-    socket.send({ message, user });
+  const handleSend = () => {
+    socket.send(JSON.stringify({ 'message': message , 'user': user }));
     setMessage('');
   }
 
   const handleUserChange = e => {
-    console.log(e.target.value)
     setUser(e.target.value);
   }
 
@@ -48,18 +58,17 @@ function App() {
     setMessage(e.target.value);
   }
 
-  console.log('render');
-  
-
   return (
     <div id="chatContainer">
       <div id="chatWindow">
         <div id="output">
 
         </div>
-        <input id="user" type="text" placeholder="User Name" onChange={handleUserChange} />
-        <input id="message" type="text" placeholder="Message" onChange={handleMessageChange} />
-        <button id="send" onClick={(e) => send(e)} >Send</button>
+        <input id="user" type="text" placeholder="User Name" value={user} onChange={handleUserChange} />
+        <input id="message" type="text" placeholder="Message" value={message} onChange={handleMessageChange} />
+        <Button id="send" variant="contained" color="primary" onClick={handleSend}>
+          Send
+        </Button>      
       </div>
     </div>
   );
