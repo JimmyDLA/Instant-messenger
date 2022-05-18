@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const wss = new WebSocket.Server({ port: 4001 });
 const CLIENTS = [];
-let id; 
+let id;
 
 app.listen(PORT, () => console.log(`listening to requests on port ${PORT}`));
 
@@ -18,7 +18,7 @@ wss.on('connection', function connection(ws) {
 
 
   ws.on('message', function incoming(message) {
-    console.log('received: %s', JSON.parse(message));
+    console.log('received:', JSON.parse(message));
     sendAll(message);
     // wss.send(message);
   });
