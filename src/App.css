@@ -21,11 +21,11 @@
 .App-link {
   color: #61dafb;
 }
+
 #chatContainer {
   width: 92%;
   height: 700px;
   padding: 3vw;
-
 }
 
 #chatWindow {
@@ -35,7 +35,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* padding: 50px; */
+
 }
 
 #output {
@@ -43,26 +43,32 @@
   width: 100%;
   height: 75%;
   background-color: rgb(230, 230, 230);
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(200, 200, 200);
+  padding: 10px
 }
 
 #user {
-  margin-top: 20px ;
+  margin-top: 20px;
   max-width: 593px;
   width: 99%;
   height: 5%;
+  margin-bottom: 5px;
+  border-radius: 10px;
 }
 
 #message {
   max-width: 593px;
   width: 99%;
   height: 15%;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
 
 #send {
   max-width: 600px;
   width: 100%;
   height: 5%;
+  background-color: #61dafb;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -75,6 +81,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
